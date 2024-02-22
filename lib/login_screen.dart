@@ -4,6 +4,7 @@ import 'signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'home.dart';
+import 'imagecount.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -124,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: double.infinity,
                       child: ElevatedButton.icon(
                         icon: Image.asset('assets/images/we_logo.png', width: 24, height: 24),
-                        label: Text('Log in', style: TextStyle(color: Colors.black)),
+                        label: Text('Log in', style: TextStyle(color: Colors.black87)),
                         onPressed: () async {
                           if (_emailInputText.text.isEmpty || _passInputText.text.isEmpty) return;
 
@@ -154,41 +155,45 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.symmetric(vertical: 5),
-                      width: double.infinity,
-                      child: ElevatedButton.icon(
-                        icon: Image.asset('assets/images/google.png', width: 24, height: 24), // 이미지 추가
-                        label: Text('Start with Google'),
-                        onPressed: () async {
-                          final _googleSignIn = GoogleSignIn();
-                          final googleAccount = await _googleSignIn.signIn();
-
-                          if (googleAccount != null) {
-                            final googleAuth = await googleAccount.authentication;
-
-                            if (googleAuth.accessToken != null &&
-                                googleAuth.idToken != null) {
-                              try {
-                                await FirebaseAuth.instance
-                                    .signInWithCredential(GoogleAuthProvider.credential(
-                                  idToken: googleAuth.idToken,
-                                  accessToken: googleAuth.accessToken,
-                                ));
-                                print('success registered');
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => HomeScreen()),
-                                );
-                              } on FirebaseAuthException catch (e) {
-                                print('an error occured $e');
-                              } catch (e) {
-                                print('an error occured $e');
-                              }
-                            } else
-                              print('an error occured');
-                          } else
-                            print('an error occured');
-                        },
+                      margin: EdgeInsets.fromLTRB(70, 60, 70, 0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            children: <Widget>[
+                              Divider(
+                                thickness: 0.7,
+                                color: Colors.black54,
+                              ),
+                              Container(
+                                width: 20,
+                                height: 20,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  shape: BoxShape.circle,
+                                ),
+                              ),
+                              Container(
+                                width: 9,
+                                height: 9,
+                                decoration: BoxDecoration(
+                                  color: Colors.black54,
+                                  shape: BoxShape.circle,
+                                ),
+                              ),
+                              Container(
+                                width: 7,
+                                height: 7,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  shape: BoxShape.circle,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 5),
+                        ],
                       ),
                     ),
                     Row(
