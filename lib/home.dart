@@ -19,7 +19,8 @@ class _MyMainPageState extends State<MyMainPage> {
       Navigator.push(
         context,
         PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => CameraScreen(),
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              CameraScreen(),
           transitionDuration: Duration.zero,
           reverseTransitionDuration: Duration.zero,
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
@@ -32,7 +33,8 @@ class _MyMainPageState extends State<MyMainPage> {
       Navigator.push(
         context,
         PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => CalendarScreen(),
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              CalendarScreen(),
           transitionDuration: Duration.zero,
           reverseTransitionDuration: Duration.zero,
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
@@ -67,9 +69,12 @@ class _MyMainPageState extends State<MyMainPage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
-          BottomNavigationBarItem(icon: Icon(Icons.camera_alt), label: 'camera'),
-          BottomNavigationBarItem(icon: Icon(Icons.date_range), label: 'calendar'),
-          BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: 'mypage'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.camera_alt), label: 'camera'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.date_range), label: 'calendar'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person_outline), label: 'mypage'),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.black54,
@@ -98,10 +103,14 @@ class _MyMainPageState extends State<MyMainPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Otter',style: TextStyle(
-                      fontSize: 14,)),
-                    Text('level $imageIndex',style: TextStyle(
-                      fontSize: 14,)),
+                    Text('Otter',
+                        style: TextStyle(
+                          fontSize: 14,
+                        )),
+                    Text('level $imageIndex',
+                        style: TextStyle(
+                          fontSize: 14,
+                        )),
                   ],
                 ),
                 decoration: BoxDecoration(
@@ -112,7 +121,9 @@ class _MyMainPageState extends State<MyMainPage> {
               SizedBox(height: 10),
               Container(
                 margin: EdgeInsets.only(top: constraints.maxHeight * 0.03),
-                child: Image.asset('assets/images/$imageName', width: constraints.maxWidth * 0.5, height: constraints.maxWidth * 0.5),
+                child: Image.asset('assets/images/$imageName',
+                    width: constraints.maxWidth * 0.5,
+                    height: constraints.maxWidth * 0.5),
               ),
               SizedBox(
                 height: constraints.maxHeight * 0.3,
@@ -140,17 +151,20 @@ class _MyMainPageState extends State<MyMainPage> {
                           SizedBox(height: 5),
                           Text(
                             imageCount == 1 ? 'once' : '$imageCount times',
-                            style: TextStyle(fontSize: 35, fontWeight: FontWeight.w700),
+                            style: TextStyle(
+                                fontSize: 35, fontWeight: FontWeight.w700),
                           ),
                           SizedBox(height: 5),
                           Text(
                             'Did you recycle this week?',
-                            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300, color: Colors.grey[700]),
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.grey[700]),
                           ),
                         ],
                       ),
                     ),
-
                   ],
                 ),
               )
@@ -161,10 +175,3 @@ class _MyMainPageState extends State<MyMainPage> {
     );
   }
 }
-
-
-
-
-
-
-

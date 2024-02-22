@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'home.dart';
 import 'main.dart';
 import 'camera.dart';
@@ -168,7 +169,8 @@ class _MyHomePageState extends State<MyHomePage> {
           actions: <Widget>[
             TextButton(
               child: Text('Yes', style: TextStyle(color: Color(0xFF417541),)),
-              onPressed: () {
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
                 Navigator.push(
                   context,
                   PageRouteBuilder(
